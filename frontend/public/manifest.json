@@ -1,0 +1,8 @@
+{
+  "short_name": "Personal Website",
+  "name": "Personal Website for Gael Bau",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
