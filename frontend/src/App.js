@@ -47,6 +47,8 @@ class App extends React.Component {
           <header className="app-header" 
             onBlur={this.onBlurHandler}
             onFocus={this.onFocusHandler}>
+            
+            <div className="app-header__name">Welcome to my Website!</div>
             <button className="nav--toggle" onClick={this.collapseNav}>
               <i className="fas fa-bars"></i>
             </button>
