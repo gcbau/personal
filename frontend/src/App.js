@@ -6,18 +6,23 @@ import Contact from './contact/contact';
 import Landing from './landing/landing';
 import NotFound from './not-found/not-found';
 
+const linkedInUrl = "https://www.linkedin.com/in/gael-bau-97a2b6bb/";
+const messengerUrl = "https://m.me/GaelCalmaBau";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isNavCollapsed: false
+      isNavCollapsed: false,
+      socialUrl: "",
     }
     this.timeOutId = null;
 
     this.collapseNav = this.collapseNav.bind(this);
     this.onBlurHandler = this.onBlurHandler.bind(this);
     this.onFocusHandler = this.onFocusHandler.bind(this);
+    this.onHoverHandlerSocial = this.onHoverHandlerSocial.bind(this);
   }
 
   collapseNav() {
@@ -37,6 +42,12 @@ class App extends React.Component {
   onFocusHandler() {
     clearTimeout(this.timeOutId);
   }
+
+	onHoverHandlerSocial(url) {
+		this.setState({
+      socialUrl: url
+    });
+	}
 
   render() {
     const navCollapsed = this.state.isNavCollapsed ? "nav--collapsed" : "nav";
@@ -68,13 +79,21 @@ class App extends React.Component {
           </main>
           <footer className="app-footer">
             <div className="app-footer-item">
-              <a href="/contact">Contact</a>
+              <a  className="app-footer-social-item" 
+                  href={messengerUrl}
+                  onMouseEnter={() => this.onHoverHandlerSocial(messengerUrl)}>
+                <i className="fab fa-facebook-messenger"></i>
+              </a>
+              <a  className="app-footer-social-item" 
+                  href={linkedInUrl}
+                  onMouseEnter={() => this.onHoverHandlerSocial(linkedInUrl)}>
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+              <div className="app-footer-social-item-display">{this.state.socialUrl}</div>
             </div>
             <div className="app-footer-item">
-              <a className="app-footer-social-item" href="https://m.me/GaelCalmaBau"><i className="fab fa-facebook-messenger"></i></a>
-              <a className="app-footer-social-item" href="https://www.linkedin.com/in/gael-bau-97a2b6bb/"><i className="fab fa-linkedin-in"></i></a>
+              <small>&copy; Copyright 2019</small>
             </div>
-            <div className="app-footer-item">copyright by me 2019.</div>
           </footer>
         </div>
       </Router>
