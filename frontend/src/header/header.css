@@ -1,0 +1,107 @@
+.header {
+  position: fixed;
+  z-index: 10000;
+
+  width: 100%;
+  height: 64px;
+
+  background-color: transparent;
+
+  padding: 10px;
+}
+
+.header__name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  padding: 10px;
+}
+
+.header .nav--toggle {
+  position: absolute;
+  z-index: 1000;
+  top: 8px;
+  right: 8px;
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid black;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.header .nav {
+  display: none;
+}
+
+.header .nav--collapsed {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border: 1px solid black;
+  background-color: rgba(64, 64, 64, 1);
+  padding-bottom: 10px;
+}
+
+.header .nav__item {
+  margin: 15px 25px;
+  text-decoration: none;
+  color: white;
+  height: 50px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-size: 1.5rem;
+}
+
+.header .nav__item::after {
+  content: "";
+  background-color: white;
+  height: 1px;
+  width: 0%;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+@media screen and (min-width: 425px) {
+  .header .nav--toggle {
+    display: none;
+  }
+
+  .header .nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .header .nav__item:hover::after {
+    width: 100%;
+  }
+  
+  .header .active.nav__item::after {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    width: 1440px;
+    margin: auto;
+  }
+}

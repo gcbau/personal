@@ -1,33 +1,38 @@
 import React from 'react';
+import Gael from '../assets/images/square-gael.png';
 import './about.css';
-import Kona from '../assets/images/dog-kona.jpeg';
 
-class About extends React.Component {
-	render() {
-		return (
-			<div className="about">
-				<div className="about--section">
-					<div className="about--section__title">
-						<img className="about--section__img" src={Kona}></img>
-						Who am I
-					</div>
-					<div className="about--section__content">
-						Hi! I'm a software engineer that just graduated this year! 
-						I studied Computer Science at UC Irvine for my B.S. degree.
-						I like my dog Kona very much! She is a good girl and loves to eat literally anything.
-					</div>
-				</div>
-				<div className="about--section">
-					<div className="about--section__title">
-						Me porfolio!
-					</div>
-					<div className="about--section__content">
-						Haha this is a work in progress :))
-					</div>
-				</div>
+function About() {
+	return (
+		<div className="about">
+			<div className="about--header">
+				<h1 className="about--header__title">About Me</h1>
+				<img className="about--header__img" src={Gael}></img>
 			</div>
-		)
-	}
+			<ul className="about--content">
+				<li className="about--content__item">
+					My name is Gael Bau and I'm a recent Software Engineer graduate.
+				</li>
+				<li className="about--content__item">
+					I studied Computer Science at UC Irvine for B.S. degree.
+				</li>
+				<li className="about--content__item">
+					I am seeking to expand technical knowledge and meet great people along the way. 
+				</li>
+				<li className="about--content__item">
+					I have front end experience in Angular and some exposure to React.
+				</li>
+				<li className="about--content__item">
+					I have back end experience in SQL (MySQL, PostGreSQL, MS SQL Server), 
+					noSQL (MongoDB), and NodeJS/ExpressJs.
+				</li>
+				<li className="about--content__item">
+					I have experience in using third-party APIs (Shopify, Ebay, Stripe)
+					to add functionality to an existing application.
+				</li>
+			</ul>
+		</div>
+	);
 }
 
 export default About;

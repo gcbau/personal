@@ -1,0 +1,14 @@
+.portfolio {
+  /* padding-top: 50px;
+  padding-bottom: 50px; */
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.portfolio--header {
+  text-align: center;
+}

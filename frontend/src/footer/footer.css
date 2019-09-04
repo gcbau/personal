@@ -1,0 +1,35 @@
+.footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: inherit;
+}
+
+.footer--item {
+  margin: 10px 0px;
+  font-size: 1.5rem;
+}
+
+.footer--item:last-child {
+  font-size: inherit;
+}
+
+.footer--item--social {
+  margin: 0px 10px;
+}
+
+.footer--item--social__display {
+  display: none;
+  margin: 5px 0px;
+  height: 1rem;
+}
+
+.footer--item a {
+  color: white;
+}
+
+@media screen and (min--width: 500px) {
+  .footer--item--social__display {
+    display: block;
+  }
+}
