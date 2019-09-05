@@ -1,6 +1,6 @@
 import React from 'react';
 import './landing.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Resume from '../assets/documents/gaelbau_resume.pdf';
 import About from '../about/about';
 

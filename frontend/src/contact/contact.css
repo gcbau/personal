@@ -5,10 +5,10 @@
   flex-direction: column;
   align-items: center;
 
-  padding-top: 64px;
+  padding-top: 30px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .contact__title {
@@ -23,9 +23,12 @@
   text-align: center;
 }
 
+.contact--form__name,
 .contact--form__email,
+.contact--form__subject,
 .contact--form__body {
   display: block;
+  width: 300px;
   margin: 10px 0px;
 
   border: none;
@@ -40,7 +43,6 @@
 }
 
 .contact--form__body {
-  width: 300px;
   height: 250px;
 
   font-family: inherit;

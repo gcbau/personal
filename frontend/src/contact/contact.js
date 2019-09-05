@@ -1,6 +1,12 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './contact.css';
+import Axios from 'axios';
+
+const api = Axios.create({
+	baseURL: 'http://localhost:3001/',
+	responseType: 'json'
+});
 
 // const reCaptchaRef = React.createRef();
 
@@ -9,8 +15,11 @@ class Contact extends React.Component {
 		super(props);
 
 		this.state = {
+			name: '',
 			email: '',
+			subject: '',
 			body: '',
+			isDisabled: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -26,8 +35,32 @@ class Contact extends React.Component {
 	}
 
 	handleSubmit(token) {
-		alert(this.state.email + ' // ' + this.state.body);
-		this.captcha.reset();
+		if (!this.state.name || this.state.name.trim() === '') return;
+		if (!this.state.email || this.state.email.trim() === '') return;
+		if (!this.state.subject || this.state.subject.trim() === '') return;
+		if (!this.state.body || this.state.body.trim() === '') return;
+
+		this.setState({
+			isDisabled: !this.state.isDisabled
+		})
+		
+		api.post('/mail', this.state).then((data) => {
+			alert('Your message has been sent!');
+			this.captcha.reset();
+			this.setState({
+				name: '',
+				email: '',
+				subject: '',
+				body: '',
+				isDisabled: !this.state.isDisabled
+			})
+		}).catch((err) => {
+			console.log(err);
+			this.captcha.reset();
+			this.setState({
+				isDisabled: !this.state.isDisabled
+			})
+		});
 	}
 
 	render() {
@@ -37,7 +70,8 @@ class Contact extends React.Component {
 				<p className="contact__description">
 					You can send me a message and I will email you back as soon as I see it.
 				</p>
-				<form className="contact--form" onSubmit={(e) => e.preventDefault()}>
+				<form	className="contact--form" 
+							onSubmit={(e) => e.preventDefault()}>
 					<ReCAPTCHA
 						ref={el => this.captcha = el}
 						size="invisible"
@@ -45,22 +79,50 @@ class Contact extends React.Component {
 						onChange={(token) => this.handleSubmit(token)}
 					/>
 					<label>
+						Name:
+						<input	className="contact--form__name"
+										type="text" 
+										name="name"
+										value={this.state.name}
+										onChange={(e) => this.handleChange(e, 'name')}
+										required/>
+					</label>
+
+					<label>
 						Email:
 						<input	className="contact--form__email" 
-										type="text" value={this.state.email} 
+										type="email" 
+										name="email"
+										value={this.state.email} 
 										onChange={(e) => this.handleChange(e, 'email')} 
-										placeholder="user@mail.com" />
+										required/>
+					</label>
+
+					<label>
+						Subject:
+						<input	className="contact--form__subject" 
+										type="text" 
+										name="subject"
+										value={this.state.subject} 
+										onChange={(e) => this.handleChange(e, 'subject')} 
+										required/>
 					</label>
 
 					<label>
 						Message Body:
 						<textarea	className="contact--form__body" 
+											name="body"
 											value={this.state.body} 
 											placeholder="type your message here"
-											onChange={(e) => this.handleChange(e, 'body')} />
+											onChange={(e) => this.handleChange(e, 'body')} 
+											required/>
 					</label>
 
-					<button className="contact--form__submit" onClick={() => this.captcha.execute()}>Submit</button>
+					<button	className="contact--form__submit" 
+									onClick={() => this.captcha.execute()}
+									disabled={this.state.isDisabled}>
+						Submit
+					</button>
 				</form>
 			</div>
 		);

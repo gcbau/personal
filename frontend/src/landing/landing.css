@@ -27,7 +27,7 @@
 }
 
 .landing--section__title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -39,7 +39,7 @@
 }
 
 .landing--section--container__item {
-  padding: 20px 30px;
+  padding: 15px 25px;
   margin: 10px 0;
   border: 1px solid white;
   border-radius: 3px;
@@ -47,7 +47,7 @@
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .landing--section--container__item:hover {
@@ -86,6 +86,14 @@
   color: white;
 }
 
+@media screen and (min-width: 350px) {
+  .landing--section__title {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
 @media screen and (min-width: 425px) {
   .landing--section--container {
     flex-direction: row;
@@ -93,6 +101,7 @@
   }
 
   .landing--section--container__item {
+    margin-top: 0;
     margin-left: 10px;
     margin-right: 10px;
   }

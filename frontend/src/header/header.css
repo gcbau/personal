@@ -90,6 +90,11 @@
     justify-content: flex-end;
   }
 
+  .header .nav__item {
+    margin: 0 20px;
+    font-size: 1rem;
+  }
+
   .header .nav__item:hover::after {
     width: 100%;
   }

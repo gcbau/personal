@@ -46,12 +46,12 @@ class Header extends React.Component {
           <button className="nav--toggle" onClick={this.collapseNav}><i className="fas fa-bars"></i></button>
           <nav className={navCollapsed}>
             <Link to="/" 
-                  className={"nav__item " + (this.state.active == 'home' ? 'active' : '')} 
+                  className={"nav__item " + (this.state.active === 'home' ? 'active' : '')} 
                   onClick={() => this.onBlurHandler('home')}>
               Home
             </Link>
             <Link to="/contact"
-                  className={"nav__item " + (this.state.active == 'contact' ? 'active' : '')}  
+                  className={"nav__item " + (this.state.active === 'contact' ? 'active' : '')}  
                   onClick={() => this.onBlurHandler('contact')}>
               Contact
             </Link>
